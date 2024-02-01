@@ -25,7 +25,7 @@ for ts in range(int(input())):
 
     print(f'#{ts+1}')
     for i in range(N):
-        print(f'{" ".join(map(str, result[i]))}')
+        print(*result[i])
 
 
 
