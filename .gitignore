@@ -662,6 +662,10 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
+### Test files ###
+
+test
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,visualstudio
 
 # End of https://www.toptal.com/developers/gitignore/api/c,c++,python
