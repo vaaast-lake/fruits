@@ -18,7 +18,7 @@ for _ in range(1, 11):
     stack = []
     i=0
     while 1:
-
+        
 
 
 sys.stdin.close()
