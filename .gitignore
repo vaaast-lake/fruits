@@ -664,7 +664,11 @@ FodyWeavers.xsd
 
 ### Test files ###
 
-/test.*
+test.*
+
+### Templet ###
+
+templet.*
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,visualstudio
 
