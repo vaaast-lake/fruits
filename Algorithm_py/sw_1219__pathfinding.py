@@ -73,6 +73,12 @@ class Stack:
         self.top -= 1
         return val
 
+    def peek(self):
+        if self.is_empty():
+            print('stack is empty')
+        else:
+            return self.s[self.top]
+
     def is_full(self):
         if self.top > self.size-1:
             return True
@@ -98,15 +104,23 @@ class Stack:
 #                 return 1
 #     return 0
 
-def iter_dfs(edges, visit, node):
-    pass
+def iter_dfs(edges, start, st_size):
+    stack = Stack(st_size)
+    stack.push(start)
+
+    visit = [False for _ in range(100)]
+    while stack:
+        cur = stack.peek()
+        for i in edges[cur]:
+            if not visit[edges[cur][i]]
+
 
 
 for _ in range(1, 11):
     tc, edge_n = map(int, input().split())
 
     edges = [[] for _ in range(100)]
-    visit = [False for _ in range(100)]
+    # visit = [False for _ in range(100)]
     # queue = CircularQueue(edge_n)
     # stack = Stack(edge_n)
 
@@ -116,6 +130,7 @@ for _ in range(1, 11):
 
     # result = bfs(edges, visit, 0)
     # result = dfs(edges, visit, 0)
+    result = iter_dfs(edges, 0, edge_n)
     print(f'#{tc} {result}')
 
 
