@@ -109,10 +109,19 @@ def iter_dfs(edges, start, st_size):
     stack.push(start)
 
     visit = [False for _ in range(100)]
-    while stack:
+    visit[start] = True
+    while not stack.is_empty():
         cur = stack.peek()
-        for i in edges[cur]:
-            if not visit[edges[cur][i]]
+        for next_nd in edges[cur]:
+            if next_nd == 99:
+                return 1
+            if not visit[next_nd]:
+                visit[next_nd] = True
+                stack.push(next_nd)
+                break
+        else:
+            stack.pop()
+    return 0
 
 
 
