@@ -7,28 +7,14 @@ sys.stdin = open('./sw_4880__tournament-card-game__input.txt', 'r')
 
 def compare(i, j, lst):
     win_idx = 0
-    if lst[i] == lst[j]:
-        if i > j:
-            win_idx = j
-        else:
-            win_idx = i
-    elif (lst[i] != 3 and lst[j] != 3) and \
-            lst[i] != lst[j]:
-        if lst[i] < lst[j]:
-            win_idx = j
-        else:
-            win_idx = i
-    elif lst[i] == 3 or lst[j] == 3:
-        if lst[i] == 1 or lst[j] == 1:
-            if lst[i] > lst[j]:
-                win_idx = j
-            else:
-                win_idx = i
-        elif lst[i] == 2 or lst[j] == 2:
-            if lst[i] < lst[j]:
-                win_idx = j
-            else:
-                win_idx = i
+    if lst[i] == 3 and lst[j] == 1:
+        win_idx = j
+    elif lst[j] == 3 and lst[i] == 1:
+        win_idx = i
+    elif lst[j] > lst[i]:
+        win_idx = j
+    else:
+        win_idx = i
 
     return win_idx
 
