@@ -37,7 +37,7 @@ def cnt_n_queen(ld=0, col=0, rd=0, is_first=True):
         if is_first and half < bit:
             break
         poss -= bit
-        cnt_n_queen((ld | bit) << 1, col | bit, (rd | bit) >> 1, False)
+        # cnt_n_queen((ld | bit) << 1, col | bit, (rd | bit) >> 1, False)
 
 
 for tc in range(1, int(input())+1):
@@ -53,3 +53,4 @@ for tc in range(1, int(input())+1):
     print(f'#{tc} {cnt}')
 
 sys.stdin.close()
+
