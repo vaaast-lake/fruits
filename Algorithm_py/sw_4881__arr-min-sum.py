@@ -5,7 +5,9 @@ sys.stdin = open('sw_4881__arr-min-sum__input.txt', 'r')
 
 def dfs(r=0, sum=0):
     global min_v
-    if r == N and sum < min_v:
+    if sum > min_v:
+        return
+    if r == N:
         min_v = sum
         return
 
@@ -13,11 +15,12 @@ def dfs(r=0, sum=0):
         if not board[c]:
             board[c] = table[r][c]
             dfs(r + 1, sum + table[r][c])
+            board[c] = 0
 
 
-for tc in range(int(input())):
+for tc in range(1, int(input())+1):
     N = int(input())
-    miv_v = 0
+    min_v = 0xffff
     table = [list(map(int, input().split())) for _ in range(N)]
     board = [0] * N
     dfs()
