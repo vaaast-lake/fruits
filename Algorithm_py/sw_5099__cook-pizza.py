@@ -59,8 +59,11 @@ for tc in range(1, int(input())+1):
 
     print(f'#{tc} {result}')
 
-
-
+# 5 10
+# 5 9 3 9 9 2 5 8 7 1
+# 2 4 1 4 4
+# 1 2 0(2) 2 2
+# 0(5) 1 1 1 1
 
 
 sys.stdin.close()
