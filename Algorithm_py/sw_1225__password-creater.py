@@ -30,16 +30,16 @@ class Queue:                                       #. 큐 구현
     def is_empty(self):
         return self.front == self.rear
 
-    def print(self):                        #. 큐 요소 반환
-        tmp = [0] * (self.size-1)           #. 요소가 들어갈 임시 배열 생성
-        j = 0                               #. 임시 배열의 인덱스
-        i = (self.front+1) % self.size      #. 큐를 돌기 위한 인덱스
-        while j < self.size-1:              #. 임시 배열은 큐 사이즈보다 하나 더 작아야 함
-            tmp[j] = self.s[i]
-            i = (i + 1) % self.size
-            j += 1
-
-        return tmp
+    #. def print(self):                        #. 큐 요소 반환
+    #.     tmp = [0] * (self.size-1)           #. 요소가 들어갈 임시 배열 생성
+    #.     j = 0                               #. 임시 배열의 인덱스
+    #.     i = (self.front+1) % self.size      #. 큐를 돌기 위한 인덱스
+    #.     while j < self.size-1:              #. 임시 배열은 큐 사이즈보다 하나 더 작아야 함
+    #.         tmp[j] = self.s[i]
+    #.         i = (i + 1) % self.size
+    #.         j += 1
+    #.
+    #.     return tmp
 
     def peek_right(self):                   #. 큐 가장 오른쪽 요소 확인
         return self.s[self.rear]
@@ -75,7 +75,7 @@ for _ in range(1, 11):
                 flag = False
                 break
 
-    print(f'#{tc}', *q.print())
+    print(f'#{tc}', *[q.dequeue() for _ in range(q.size-1)])
 
 
 sys.stdin.close()
