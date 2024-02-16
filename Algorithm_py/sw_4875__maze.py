@@ -1,6 +1,6 @@
 import sys
 
-sys.stdin = open('sw_12672__maze__input.txt', 'r')
+sys.stdin = open('sw_4875__maze__input.txt', 'r')
 
 START = '2'
 DEST = '3'
