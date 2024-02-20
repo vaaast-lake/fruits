@@ -1,9 +1,39 @@
 import sys
-from collections import deque
+# from collections import deque
 
-# sys.stdin = open('./bj_g4-3190__snake__input.txt', 'r')
+sys.stdin = open('./bj_g4-3190__snake__input.txt', 'r')
 
 input = sys.stdin.readline
+
+class Queue:
+    def __init__(self, size):
+        self.size = size
+        self.q = [None] * size
+        self.front = self.rear = 0
+
+    def dequeue(self):
+        if self.is_empty():
+            print('queue is empty')
+            return
+        self.front = (self.front + 1) % self.size
+        return self.q[self.front]
+
+    def enqueue(self, val):
+        if self.is_full():
+            print('queue is full')
+            return
+        self.rear = (self.rear + 1) % self.size
+        self.q[self.rear] = val
+
+    def is_full(self):
+        return self.front == (self.rear +1) % self.size
+
+    def is_empty(self):
+        return self.front == self.rear
+
+    def peek(self):
+        return self.q[self.rear]
+
 
 RIGHT = 'D'
 LEFT = 'L'
@@ -24,7 +54,8 @@ def init_table(apples_pos):
 
 
 def dummy_move(direction):
-    cur_x, cur_y = d[0]
+    # cur_x, cur_y = d[0]
+    cur_x, cur_y = q.peek()
     move_x, move_y = remote_ctr[direction][0], remote_ctr[direction][1]
     next_x, next_y = cur_x + move_x, cur_y + move_y
 
@@ -33,9 +64,11 @@ def dummy_move(direction):
     else:
         table[cur_x][cur_y] = BODY
         if table[next_x][next_y] != APPLE:
-            tail_x, tail_y = d.pop()
+            # tail_x, tail_y = d.pop()
+            tail_x, tail_y = q.dequeue()
             table[tail_x][tail_y] = EMPTY
-        d.appendleft((next_x, next_y))
+        # d.appendleft((next_x, next_y))
+        q.enqueue((next_x, next_y))
         table[next_x][next_y] = BODY
 
     return True
@@ -75,8 +108,11 @@ for el in vector_info:
     el[0] = int(el[0])
 
 table = init_table(apples_pos)
-d = deque()
-d.append((1, 1))
+# d = deque()
+# d.append((1, 1))
+q = Queue(N**2)
+q.enqueue((1, 1))
+
 
 #. 오른쪽 방향 진행을 시작으로 시계방향으로 돌아가도록 controler를 구성.
 remote_ctr = [(0, 1), (1, 0), (0, -1), (-1, 0)]
