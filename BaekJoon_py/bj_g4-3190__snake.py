@@ -1,7 +1,7 @@
 import sys
 from collections import deque
 
-sys.stdin = open('./bj_g4-3190__snake__input.txt', 'r')
+# sys.stdin = open('./bj_g4-3190__snake__input.txt', 'r')
 
 input = sys.stdin.readline
 
@@ -18,13 +18,12 @@ def init_table(apples_pos):
     table += [[-1] + [0] * N + [-1] for _ in range(N)]
     table += [[-1] * (N+2)]
     for pos in apples_pos:
-        table[pos[0]+1][pos[1]+1] = APPLE
+        table[pos[0]][pos[1]] = APPLE
 
     return table
 
 
 def dummy_move(direction):
-
     cur_x, cur_y = d[0]
     move_x, move_y = remote_ctr[direction][0], remote_ctr[direction][1]
     next_x, next_y = cur_x + move_x, cur_y + move_y
@@ -32,11 +31,12 @@ def dummy_move(direction):
     if table[next_x][next_y] == WALL or table[next_x][next_y] == BODY:
         return False
     else:
-        table[next_x][next_y] = BODY
-        d.appendleft((next_x, next_y))
+        table[cur_x][cur_y] = BODY
         if table[next_x][next_y] != APPLE:
             tail_x, tail_y = d.pop()
             table[tail_x][tail_y] = EMPTY
+        d.appendleft((next_x, next_y))
+        table[next_x][next_y] = BODY
 
     return True
 
@@ -54,8 +54,12 @@ def start_dummy_game():
             direction = (direction + 1) % 4
         elif vec == LEFT:
             direction = (direction - 1) % 4
-
-    return time
+    else:
+        while 1:
+            if not dummy_move(direction):
+                time += 1
+                return time
+            time += 1
 
 
 N = int(input())
