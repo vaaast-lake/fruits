@@ -29,7 +29,7 @@ def dummy_move(direction):
     move_x, move_y = remote_ctr[direction][0], remote_ctr[direction][1]
     next_x, next_y = cur_x + move_x, cur_y + move_y
 
-    if table[next_x][next_y] == -1 or table[next_x][next_y] == BODY:
+    if table[next_x][next_y] == WALL or table[next_x][next_y] == BODY:
         return False
     else:
         table[next_x][next_y] = BODY
