@@ -12,6 +12,12 @@ def post_order(root=1):
         num2 = post_order(root * 2 + 1) if root * 2 + 1 <= N else 0
         heap[root] = num1 + num2
 
+        #. num2 = post_order(root * 2 + 1) if root * 2 + 1 <= N else None
+        #. if num1 and num2:
+        #.     heap[root] = num1 + num2
+        #. else:
+        #.     heap[root] = num1 if num1 else num2
+
     return heap[root]
 
 
