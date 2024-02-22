@@ -1,6 +1,8 @@
 import sys
+input = sys.stdin.readline
+print = sys.stdout.write
 
-sys.stdin = open('./bj_s2-11725__find-ancient-from-tree__input.txt', 'r')
+# sys.stdin = open('./bj_s2-11725__find-ancient-from-tree__input.txt', 'r')
 
 class Queue:
     def __init__(self, size):
@@ -35,15 +37,13 @@ def init_tree(root=1):
     while not q.is_empty():
         root = q.dequeue()
         for i in range(len(adj[root])):
-            if not visited[adj[root][i]]:
+            if not parent[adj[root][i]]:
                 q.enqueue(adj[root][i])
-                visited[adj[root][i]] = True
                 parent[adj[root][i]] = root
 
 
 N = int(input())
 parent = [None] * (N+1)
-visited = [False] * (N+1)
 adj = [list() for _ in range(N+1)]
 q = Queue(N+1)
 
@@ -55,7 +55,7 @@ for _ in range(N-1):
 init_tree()
 
 for i in range(2, N+1):
-    print(parent[i])
+    print(f'{parent[i]}\n')
 
 sys.stdin.close()
 
